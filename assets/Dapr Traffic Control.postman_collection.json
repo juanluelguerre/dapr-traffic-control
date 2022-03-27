@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "59075c15-abc7-4872-a07e-974acd1cfbdc",
+		"name": "Dapr Traffic Control",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Fine Service",
+			"item": [
+				{
+					"name": "Add new Violation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vehicleId\": \"9999-MMM\",\n    \"roadId\": \"A12\",\n    \"violationInKmh\": 50,\n    \"timestamp\": \"2022-04-01T10:33:41\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:6001/collectfine",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "6001",
+							"path": [
+								"collectfine"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Control Service",
+			"item": [
+				{
+					"name": "Registry Entry",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lane\": 1,\n    \"licenseNumber\": \"XT-346-Y\",\n    \"timestamp\": \"2020-09-10T10:38:47\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:6000/entrycam",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "6000",
+							"path": [
+								"entrycam"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registry Exit",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lane\": 1,\n    \"licenseNumber\": \"XT-346-Y\",\n    \"timestamp\": \"2020-09-10T10:38:52\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6000/exitcam",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6000",
+							"path": [
+								"exitcam"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Registratrion Service",
+			"item": [
+				{
+					"name": "Get vehicle info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3602/v1.0/invoke/vehicleregistrationservice/method/vehicleinfo/XS-51-BG",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3602",
+							"path": [
+								"v1.0",
+								"invoke",
+								"vehicleregistrationservice",
+								"method",
+								"vehicleinfo",
+								"XS-51-BG"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
